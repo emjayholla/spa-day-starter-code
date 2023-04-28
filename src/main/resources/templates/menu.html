@@ -8,8 +8,38 @@
 <body>
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
+    <h2>My Profile</h2>
+    <p th:text="'Client Name: ' + ${name}"></p>
+    <p th:text="'Skin Type: ' + ${skintype}"></p>
+    <p th:text="'Manicure or Pedicure: ' + ${manipedi}"></p>
 </div>
 <div id = "servicesMenu">
+    <h2>Menu of Available Services</h2>
+    <h3>Facial Treatments</h3>
+    <table>
+        <th:block th:each = "facials : ${appropriateFacials}">
+            <tr>
+                <td th:text = "${facials}"></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div th:if = "${manipedi == 'manicure'}">
+        <h3>Manicure</h3>
+        <p th:replace = "fragments :: manicureDescription"></p>
+    </div>
+
+    <div th:if = "${manipedi == 'pedicure'}">
+        <h3>Pedicure</h3>
+        <p th:replace = "fragments :: pedicureDescription"></p>
+    </div>
+
+
+
+    </th:block>
 </div>
+<footer>
+    <div class="square"></div>
+</footer>
 </body>
 </html>
